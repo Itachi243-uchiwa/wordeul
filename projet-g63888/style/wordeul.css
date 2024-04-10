@@ -59,12 +59,12 @@
   }
 
   .present {
-    color: coral;
+    color: rgb(255, 238, 80);
   }
   .absent {
     color: red;
   }
   .correct {
-    color: greenyellow;
+    color: rgb(47, 255, 47);
   }
   
