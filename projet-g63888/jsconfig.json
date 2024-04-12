@@ -1,0 +1,6 @@
+{
+  "complilerOptions": {
+    "checksJs: true,
+    "target": "ES2016"
+  }
+}

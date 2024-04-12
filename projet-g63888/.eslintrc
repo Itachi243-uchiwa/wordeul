@@ -1,0 +1,263 @@
+{
+    "env": {
+        "navigateur" : vrai,
+        "es6" : vrai
+    },
+    "extends": "eslint: recommandé",
+    "ParserOptions": {
+        "ecmaVersion": 2020
+    },
+    "règles": {
+        /* recommandé désactivé */
+        "no-undef": "off",
+        "no-unused-vars": "off",
+
+        /* Erreurs possibles */
+        "no-extra-parens": "avertir",
+        "pas de perte de précision": "erreur",
+        "no-promise-executor-return": "erreur",
+        "no-template-curly-in-string": "avertir",
+        "no-unaccessable-loop": "erreur",
+        "pas de chaînage facultatif dangereux": [
+            "erreur",
+            {
+                "disallowArithmeticOperators": vrai
+            }
+        ],
+
+        /* Les meilleures pratiques */
+        "array-callback-return": "erreur",
+        "block-scoped-var": "erreur",
+        "class-methods-use-this": "erreur",
+        "consistent-return": "erreur",
+        "bouclé": "erreur",
+        // "dernier cas par défaut": "erreur",
+        "default-param-last": "erreur",
+        "emplacement-point": [
+            "erreur",
+            "propriété"
+        ],
+        "notation par points": "erreur",
+        "eqeqeq": "erreur",
+        "guard-for-in": "erreur",
+        "grouped-accessor-pairs": "erreur",
+        "pas d'alerte": "erreur",
+        "no-caller": "erreur",
+        "no-constructor-return": "erreur",
+        "no-empty-function": "erreur",
+        // "no-eq-null": "erreur",
+        "no-eval": "erreur",
+        "no-extend-native": "erreur",
+        "no-extra-bind": "erreur",
+        "pas de coercition implicite": [
+            "erreur",
+            {
+                "permettre": [
+                    "+"
+                ]
+            }
+        ],
+        // "no-implicit-globals": "erreur",
+        "no-implicit-eval": "erreur",
+        "no-invalid-this": "erreur",
+        "no-iterator": "erreur",
+        "no-labels": "erreur",
+        "no-lone-blocks": "erreur",
+        "no-loop-func": "erreur",
+        // "pas de nombres-magiques": "erreur",
+        "no-multi-spaces": "erreur",
+        "no-multi-str": "erreur",
+        "pas de nouveau": "erreur",
+        "no-new-func": "erreur",
+        "no-new-wrappers": "erreur",
+        "no-octal-escape": "erreur",
+        "no-param-reassign": "erreur",
+        "no-proto": "erreur",
+        "no-return-assign": "erreur",
+        "no-return-wait": "erreur",
+        "no-script-url": "erreur",
+        "no-self-compare": "erreur",
+        "no-sequences": "erreur",
+        "no-throw-literal": "erreur",
+        "no-unmodified-loop-condition": "erreur",
+        "no-unused-expressions": "erreur",
+        "no-useless-call": "erreur",
+        "no-useless-concat": "erreur",
+        "no-useless-return": "erreur",
+        "no-void": "erreur",
+        // "prefer-named-capture-group": "erreur",
+        // "préférer-promise-rejeter-erreurs": "erreur",
+        "prefer-regex-literals": "erreur",
+        "base": "erreur",
+        // "wrap-iife": "erreur",
+
+        /* Mode strict */
+        "strict": [
+            "erreur",
+            "mondial"
+        ],
+
+        /* Variables */
+        "init-declarations": "erreur",
+        "no-shadow": "erreur",
+
+        /* Problèmes stylistiques */
+        "tableau-support-nouvelle ligne": [
+            "erreur",
+            "cohérent"
+        ],
+        "espacement-support-tableau": [
+            "erreur",
+            "jamais"
+        ],
+        "tableau-élément-nouvelle ligne": [
+            "erreur",
+            "cohérent"
+        ],
+        "style accolade": [
+            "erreur",
+            "1 cuillère à soupe"
+        ],
+        // "camelcase": "erreur",
+        "virgule-pendante": [
+            "erreur",
+            {
+                "arrays": "toujours multiligne",
+                "objects": "toujours-multiligne",
+                "imports": "jamais",
+                "exports": "jamais",
+                "functions": "jamais"
+            }
+        ],
+        "comma-spacing": "erreur",
+        "style virgule": "erreur",
+        "espacement-propriété-calculé": [
+            "erreur",
+            "jamais"
+        ],
+        "eol-dernier": [
+            "erreur",
+            "toujours"
+        ],
+        "func-call-spacing": "erreur",
+        "noms-fonctions": [
+            "erreur",
+            "jamais"
+        ],
+        "fonction-appel-argument-nouvelle ligne": [
+            "erreur",
+            "cohérent"
+        ],
+        "fonction-paren-nouvelle ligne": [
+            "erreur",
+            "arguments multilignes"
+        ],
+        "implicit-arrow-linebreak": "erreur",
+        "retrait": [
+            "erreur",
+            4
+        ],
+        "key-spacing": "erreur",
+        "keyword-spacing": "erreur",
+        "lines-between-class-members": "erreur",
+        "max-statements-per-line": "erreur",
+        "new-parens": "erreur",
+        "newline-per-chained-call": "erreur",
+        "no-array-constructor": "erreur",
+        "no-continue": "erreur",
+        "no-lonely-if": "erreur",
+        "pas de lignes vides multiples": [
+            "erreur",
+            {
+                "maximum": 1,
+                "maxEOF": 0,
+                "maxBOF": 0
+            }
+        ],
+        "no-new-object": "erreur",
+        "no-tabs": "erreur",
+        "no-trailing-spaces": "erreur",
+        "no-whitespace-before-property": "erreur",
+        "objet-curly-newline": [
+            "erreur",
+            {
+                "cohérent" : vrai,
+                "minPropriétés": 3
+            }
+        ],
+        "object-curly-spacing": "erreur",
+        "objet-propriété-nouvelle ligne": [
+            "erreur",
+            {
+                "allowAllPropertiesOnSameLine": vrai
+            }
+        ],
+        "blocs rembourrés": [
+            "erreur",
+            {
+                "blocks": "jamais",
+                // "classes": "toujours",
+                "switches": "jamais"
+            }
+        ],
+        "ligne de remplissage-entre-instructions": [
+            "erreur",
+            {
+                "blankLine": "toujours",
+                "prev": "directive",
+                "suivant": "*"
+            }
+        ],
+        "prefer-exponentiation-operator": "erreur",
+        "citations": [
+            "erreur",
+            "double"
+        ],
+        "semi": [
+            "erreur",
+            "toujours"
+        ],
+        "semi-espacement": "erreur",
+        "space-before-blocks": "erreur",
+        "espace-avant-fonction-paren": [
+            "erreur",
+            {
+                "anonyme": "ignorer",
+                "named": "jamais",
+                "asyncArrow": "toujours"
+            }
+        ],
+        "espace entre parenthèses": "erreur",
+        "space-infix-ops": "erreur",
+        "space-unary-ops": "erreur",
+        "switch-colon-spacing": "erreur",
+        "template-tag-spacing": "erreur",
+        "unicode-bom": "erreur",
+
+        /*ECMAScript 6 */
+        "arrow-body-style": "erreur",
+        "arrow-parens": "erreur",
+        "arrow-spacing": "erreur",
+        "generator-star-spacing": "erreur",
+        "no-duplicate-imports": "erreur",
+        "no-new-symbol": "erreur",
+        "no-useless-computed-key": "erreur",
+        "no-useless-constructor": "erreur",
+        "no-useless-rename": "erreur",
+        "no-this-before-super": "erreur",
+        "no-var": "erreur",
+        // préfère-flèche-rappel
+        "prefer-const": "erreur",
+        // préfère la déstructuration
+        "prefer-numeric-literals": "erreur",
+        "prefer-rest-params": "erreur",
+        "prefer-spread": "erreur",
+        "prefer-template": "erreur",
+        "require-yield": "erreur",
+        "rest-spread-spacing": "erreur",
+        "sort-imports": "erreur",
+        "symbol-description": "erreur",
+        "template-curly-spacing": "erreur",
+        "yield-star-spacing": "erreur"
+    }
+}
