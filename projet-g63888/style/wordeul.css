@@ -23,14 +23,14 @@
   
   #game {
     position: absolute;
-    display: grid;
+    display: none;
     grid-template-rows: repeat(5, 1fr);
     grid-gap: 5px;
     padding: 10px;
     user-select: none;
     border: 1px solid;
     border-radius: 4px;
-    margin-top: 23%;
+    margin-top: 15%;
   }
   
   #game .row {
@@ -144,3 +144,15 @@
       transform: rotate(10deg); 
     }
   }
+
+  @keyframes shake-animation {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(5px); }
+    50% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake-animation {
+    animation: shake-animation 0.5s ease;
+}

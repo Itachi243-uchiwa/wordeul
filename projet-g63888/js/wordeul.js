@@ -1,14 +1,15 @@
 'use strict';
 
 // Initialisation des variables globales
+const gameEl = getGameElement();
 let currentRowIndex = 0;
-
 let currentTileIndex = 0;
-const targetWord = 'LACEE';
-
+const taille = targetWord.length;
 let tentativesActuel = 0;
-const tentativesMax = 5;
+const tentativesMax = 6;
+const inputForm = document.getElementById("word");
 
+createGrid(gameEl, tentativesMax, taille);
 // Ajout du gestionnaire d'événements keyup
 document.addEventListener('keyup', keyUpHandler);
 
@@ -40,7 +41,6 @@ function setLetter(gameEl, numRow, numTile, letter) {
 function keyUpHandler(event) {
 	const touche = event.key;
 	const alphabetLetters = /^[a-zA-Z]$/;
-	const gameEl = getGameElement();
 
 	if (alphabetLetters.test(touche)) {
 		handleLetterInput(gameEl, touche.toUpperCase());
@@ -58,7 +58,7 @@ function keyUpHandler(event) {
  * @param {string} letter - La lettre saisie.
  */
 function handleLetterInput(gameEl, letter) {
-	if (currentTileIndex < 5) {
+	if (currentTileIndex < taille) {
 		setLetter(gameEl, currentRowIndex, currentTileIndex, letter);
 		currentTileIndex++;
 	} else {
@@ -137,7 +137,7 @@ function jeuTerminer(word) {
  */
 function getCurrentWord(gameEl) {
 	let word = '';
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < taille; i++) {
 		word += gameEl.children[currentRowIndex].children[i].textContent;
 	}
 
@@ -150,7 +150,7 @@ function getCurrentWord(gameEl) {
  * @param {string} word - Le mot actuellement saisi.
  */
 function wellplaced(gameEl, word) {
-	for (let i = 0; i < word.length; i++) {
+	for (let i = 0; i < taille; i++) {
 		if (targetWord[i] === word[i]) {
 			gameEl.children[currentRowIndex].children[i].classList.add('correct');
 		}
@@ -163,18 +163,18 @@ function wellplaced(gameEl, word) {
  * @param {string} word - Le mot actuellement saisi.
  */
 function badplaced(gameEl, word) {
-	const tab = new Array(5).fill(false);
-	for (let i = 0; i < 5; i++) {
+	const tab = new Array(taille).fill(false);
+	for (let i = 0; i < taille; i++) {
 		if (targetWord[i] === word[i]) {
 			tab[i] = true;
 			// GameEl.children[currentRowIndex].children[i].classList.add('correct');
 		}
 	}
 
-	for (let j = 0; j < 5; j++) {
+	for (let j = 0; j < taille; j++) {
 		if (targetWord[j] !== word[j]) {
 			let letterFound = false;
-			for (let k = 0; k < 5; k++) {
+			for (let k = 0; k < taille; k++) {
 				if (!tab[k] && targetWord[k] === word[j]) {
 					tab[k] = true;
 					letterFound = true;
@@ -184,7 +184,7 @@ function badplaced(gameEl, word) {
 				}
 			}
 
-			if (!letterFound) {
+			if (!letterFound && !tab[j]) {
 				gameEl.children[currentRowIndex].children[j].classList.add('absent');
 			}
 		}
@@ -225,3 +225,25 @@ boutonWin.addEventListener('click', () => {
 boutonFail.addEventListener('click', () => {
 	defaite.style.display = 'none';
 });
+
+function createGrid(gameEl, numRows, wordLength) {
+    // Définir les styles CSS dynamiquement
+    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
+
+    for (let i = 0; i < numRows; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+
+        for (let j = 0; j < wordLength; j++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            tile.textContent = "X";
+
+            row.appendChild(tile);
+			row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
+        }
+        gameEl.appendChild(row);
+    }
+}
+
+

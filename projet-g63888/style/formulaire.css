@@ -1,0 +1,100 @@
+#configForm {
+    position: absolute;
+    display: block;
+    /* margin: 0; */
+    top: 30%;
+    width: 50%;
+    height: 50%;
+    left: 21%;
+}
+legend {
+    font-size: 25px;
+
+}
+
+fieldset {
+    /* position: absolute; */
+    display: inline-block;
+    width: 50%;
+    height: 20%;
+    border: 1px solid #888;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #888;
+    border-radius: 4px;
+    margin-right: 10px; /* Ajouter une marge à droite pour espacer les fieldsets */
+}
+
+fieldset input {
+    width: 100%;
+    height: 50%;
+    border: none;
+    color: #888;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+#btn {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 10%;
+    height: 13%;
+    border-radius: 5px;
+    background-color: rgba(28, 94, 218, 0.863);
+    color: black;
+}
+#btn1 {
+    position: absolute;
+    left: 11%;
+    bottom: 0;
+    width: 10%;
+    height: 13%;
+    border-radius: 5px;
+    background-color: rgba(21, 228, 48, 0.863);
+    color: black;
+}
+
+.container {
+    display: grid;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20.9%;
+    border-radius: 3px;
+    height: 79.5% ;
+    justify-content: center;
+    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    background-image: url('madara.jpg');
+    background-size: cover;
+
+}
+main {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+
+}
+.slide{
+    display: none;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.5s ease;
+    opacity: 0;
+}
+.slide.active {
+    opacity: 1;
+    display: block;
+}
+.ad {
+    position: absolute;
+    text-align: center;
+    transform: translateY(-50%, -50%);
+    padding: 10px;
+    top : 8%;
+    z-index: 1;
+    left: 22%;
+    font-size: 20px;
+    display: block;
+    color: rgba(240, 248, 255, 0.568);
+   }

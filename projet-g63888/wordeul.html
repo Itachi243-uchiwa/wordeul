@@ -5,47 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wordeul</title>
     <link rel="stylesheet" href="style/wordeul.css">
+    <link rel="stylesheet" href="style/formulaire.css">
     <script src="js/wordeul.js" defer></script>
+    <script src="js/formulaire.js" defer></script>
+    <script src="js/dict.js" defer></script>
 </head>    
 <body>
     <h1>Wordeul</h1>
-    <section id="game">
-        <div class="row">
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-        </div>
-        <div class="row">
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-        </div>
-        <div class="row">
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-        </div>
-        <div class="row">
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-        </div>
-        <div class="row">
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-            <div class="tile">X</div>
-        </div>
-</section>
+    <section id="game"></section>
 <div id="winModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
@@ -59,5 +26,29 @@
         <p id="failMsg">Dommage ! Vous avez perdu.</p>
     </div>
 </div>
+<form id="configForm">
+    <legend>Configuration du Jeu</legend><br>
+    <fieldset>
+        <label for="word">Mot à deviner</label>
+        <input type="text" id="word" name="word"><br>
+    </fieldset><br><br>
+    <fieldset>
+        <label for="tentative">Nombres de Tentatives</label>
+    <input type="number" id="tentative" value="5">
+    </fieldset><br>
+    <button type="submit" id="btn">Go</button>
+    <button type="button" id="btn1">Mot hasard</button>
+</form>
+<div class="container">
+    <main>
+        <video src="madara1.mp4" class="slide active" autoplay muted loop></video>
+        <video src="itachi.mp4" class="slide" autoplay muted loop></video>
+        <video src="madara2.mp4" class="slide" autoplay muted loop></video>
+        <video src="madara4.mp4" class="slide" autoplay muted loop></video>
+        <video src="itachi1.mp4" class="slide" autoplay muted loop></video>
+        <video src="uchiha.mp4" class="slide" autoplay muted loop></video>
+    </main>
+    <aside class="ad">Publicité Factice</aside>
+
 </body>
 </html>
