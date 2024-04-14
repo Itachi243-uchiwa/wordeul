@@ -1,112 +1,128 @@
 :root {
-    --background-color: rgba(0, 0, 0, 0.89);
-    --text-color: white;
-    --tile-background-color: rgba(255, 255, 255, 0.2);
-  }
-  
-  body {
-    position: relative;
-    display: flex;
-    height: 100vh;
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: var(--background-color);
-    color: var(--text-color);
-    justify-content: center;
-  }
-  
-  h1 {
-    position: absolute;
-    font-size: 3em;
+  --background-color: rgba(0, 0, 0, 0.89);
+  --text-color: white;
+  --tile-background-color: rgba(255, 255, 255, 0.2);
+}
 
-  }
-  
-  #game {
-    position: absolute;
-    display: none;
-    grid-template-rows: repeat(5, 1fr);
-    grid-gap: 5px;
-    padding: 10px;
-    user-select: none;
-    border: 1px solid;
-    border-radius: 4px;
-    margin-top: 15%;
-  }
-  
-  #game .row {
-    display: grid;
-    justify-content: space-around;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
-    justify-content: center;
-  }
-  
-  .tile {
-    width: 50px;
-    height: 50px;
-    background-color: var(--tile-background-color);
-    border: 1px none;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 25px;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .tile:hover {
-    background-color: rgba(255, 255, 255, 0.5);
+body {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  justify-content: center;
+}
+
+h1 {
+  position: absolute;
+  font-size: 3em;
+
+}
+
+#game {
+  position: absolute;
+  display: none;
+  grid-template-rows: repeat(5, 1fr);
+  grid-gap: 3px;
+  padding: 10px;
+  user-select: none;
+  border-radius: 4px;
+  margin-top: 8.5%;
+  animation: slideIn 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+#game .row {
+  display: grid;
+  justify-content: space-around;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+  justify-content: center;
+}
+
+.tile {
+  width: 50px;
+  height: 50px;
+  background-color: var(--tile-background-color);
+  border: 1px none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.tile:hover {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.present {
+  background-color: rgba(255, 255, 0, 0.4);
+}
+
+.absent {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+
+.correct {
+  background-color: rgba(47, 255, 47, 0.4);
+}
+
+@keyframes pulseAnimation {
+  0% {
+    transform: scale(1);
   }
 
-  .present {
-     color: rgba(255, 255, 0, 0.856);
-  }
-  .absent {
-     color:rgba(255, 0, 0, 0.993);
-  }
-  .correct {
-     color: rgba(47, 255, 47, 0.932);
+  50% {
+    transform: scale(1.1);
   }
 
-  @keyframes pulseAnimation {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-    100% { transform: scale(1); }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .pulse-animation {
-    animation: pulseAnimation 0.5s ease-in-out;
+  animation: pulseAnimation 0.5s ease-in-out;
 }
 
 .modal {
-  display: none; /* Par défaut, la modale est cachée */
-  position: fixed; /* Position fixe pour la superposer au contenu */
-  z-index: 1; /* Niveau de z-index élevé pour s'assurer que la modale est au premier plan */
+  display: none;
+  /* Par défaut, la modale est cachée */
+  position: fixed;
+  /* Position fixe pour la superposer au contenu */
+  z-index: 1;
+  /* Niveau de z-index élevé pour s'assurer que la modale est au premier plan */
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgba(0,0,0,0.5);
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 
 .modal-content {
-  background-color: rgba(255, 255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
   border-radius: 10x;
   width: 40%;
   height: 40%;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
 }
+
 .modal-content p {
   color: cyan;
   font-size: 25px;
-  
+
 }
+
 .modal.active {
   display: block;
 }
@@ -126,33 +142,62 @@
   text-decoration: none;
   cursor: pointer;
 }
+
 .word {
   color: yellow;
 }
+
 .sticker {
-  width: 120px; 
+  width: 120px;
   height: 100px;
 
   animation: spin 2.5s linear infinite;
 }
 
 @keyframes spin {
-    from {
-      transform: rotate(-10deg); 
-        }
-    to {
-      transform: rotate(10deg); 
-    }
+  from {
+    transform: rotate(-10deg);
   }
 
-  @keyframes shake-animation {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(5px); }
-    50% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-    100% { transform: translateX(0); }
+  to {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes shake-animation {
+  0% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(5px);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+
+  75% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .shake-animation {
-    animation: shake-animation 0.5s ease;
+  animation: shake-animation 0.5s ease;
+}
+
+@keyframes slideIn {
+  0% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

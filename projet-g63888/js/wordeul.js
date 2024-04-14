@@ -4,10 +4,10 @@
 const gameEl = getGameElement();
 let currentRowIndex = 0;
 let currentTileIndex = 0;
+const targetWord = "MANGE"
 const taille = targetWord.length;
 let tentativesActuel = 0;
 const tentativesMax = 6;
-const inputForm = document.getElementById("word");
 
 createGrid(gameEl, tentativesMax, taille);
 // Ajout du gestionnaire d'événements keyup
@@ -102,7 +102,17 @@ function handleEnterKeyPress(gameEl) {
 	setTimeout(() => {
 		row.classList.remove('pulse-animation');
 	}, 500); // La durée de l'animation en millisecondes si nécessaire
+	// if (!dict.includes(currentWord)) {
+    //     console.log(`Mot non trouvé: ${currentWord}`);
+    //     gameEl.classList.add('shake-animation');
+	// 	tentativesActuel--;
+	// 	for (let i = 0; i < taille; i++) {
+	// 		gameEl.children[currentRowIndex].children[i].textContent = 'X';
+	// 		currentTileIndex = 0;
+	// 	}
 
+    //     return;
+    // }
 	if (jeuTerminer(currentWord)) {
 		return;
 	}
@@ -149,10 +159,12 @@ function getCurrentWord(gameEl) {
  * @param {HTMLElement} gameEl - L'élément DOM représentant le jeu.
  * @param {string} word - Le mot actuellement saisi.
  */
+// Sélectionnez tous les boutons du clavier
 function wellplaced(gameEl, word) {
 	for (let i = 0; i < taille; i++) {
 		if (targetWord[i] === word[i]) {
 			gameEl.children[currentRowIndex].children[i].classList.add('correct');
+	        findButtonByLetter(word[i]).classList.add('correct');
 		}
 	}
 }
@@ -179,13 +191,15 @@ function badplaced(gameEl, word) {
 					tab[k] = true;
 					letterFound = true;
 					gameEl.children[currentRowIndex].children[j].classList.add('present');
+					findButtonByLetter(word[j]).classList.add('present')
 					// GameEl.children[currentRowIndex].children[k].classList.add('present');
 					break;
 				}
 			}
 
-			if (!letterFound && !tab[j]) {
+			if (!letterFound) {
 				gameEl.children[currentRowIndex].children[j].classList.add('absent');
+				findButtonByLetter(word[j]).classList.add('absent')
 			}
 		}
 	}
@@ -204,7 +218,7 @@ const boutonFail = defaite.querySelector('.close');
  */
 function victoryModal() {
 	const winMsg = document.getElementById('winMsg');
-	winMsg.innerHTML = `Félicitations, vous avez gagné!<br><br>Tentatives : ${tentativesActuel}/5`;
+	winMsg.innerHTML = `Félicitations, vous avez gagné!<br><br>Tentatives : ${tentativesActuel}/${tentativesMax}`;
 	victoire.style.display = 'block';
 }
 
@@ -246,4 +260,17 @@ function createGrid(gameEl, numRows, wordLength) {
     }
 }
 
+function findButtonByLetter(mot) {
+    let bouttonColored = null;
+
+    // Parcourez chaque bouton du clavier virtuel avec forEach
+    buttons.forEach(button => {
+        // Comparez la lettre du bouton avec la lettre donnée
+        if (button.textContent === mot) {
+            bouttonColored = button;
+        }
+    });
+
+    return bouttonColored;
+}
 

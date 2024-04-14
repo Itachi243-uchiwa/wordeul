@@ -2,6 +2,10 @@
 
 const form = document.getElementById("configForm");
 const pub = document.getElementsByClassName('container');
+const key = document.getElementById("keyboard");
+
+document.getElementById("word").value = '*'.repeat(taille);
+
 form.addEventListener('submit', function(event) {
     event.preventDefault();
 
@@ -22,7 +26,9 @@ form.addEventListener('submit', function(event) {
 function initGame(game, tentative, mot) {
     form.style.display = 'none';
     game.style.display = 'grid';
+    key.style.display = 'block';
     pub[0].style.left = '80%'; // Ajustez la valeur selon vos besoins
+    openModalBtn.style.right ='92%'
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -44,6 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startSlideshow();
 });
+// Sélectionnez le bouton
+const randomWordButton = document.getElementById("btn1");
 
 
 

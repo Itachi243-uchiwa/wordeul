@@ -6,9 +6,14 @@
     <title>Wordeul</title>
     <link rel="stylesheet" href="style/wordeul.css">
     <link rel="stylesheet" href="style/formulaire.css">
+    <link rel="stylesheet" href="style/keyboard.css">
+    <link rel="stylesheet" href="style/modal.css">
+    <!-- <script src="js/dict.js" defer></script> -->
     <script src="js/wordeul.js" defer></script>
     <script src="js/formulaire.js" defer></script>
-    <script src="js/dict.js" defer></script>
+    <script src="js/keyboard.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    
 </head>    
 <body>
     <h1>Wordeul</h1>
@@ -49,6 +54,26 @@
         <video src="uchiha.mp4" class="slide" autoplay muted loop></video>
     </main>
     <aside class="ad">Publicité Factice</aside>
+</div>
+<div id="keyboard">
+    <ul id="clavier"></ul>
+</div>
 
+<button id="open">Instructions</button>
+<div id="myModal" class="mdl">
+  <div class="modal-content-p">
+    <span id="fermer">&times;</span>
+    <h2>But du Jeu</h2>
+    <p>Le Joueur donne un mot et confirme avec Enter. si 
+        si le mot se trouve au dictionnaire, l'ordinateur accepte le mot et indique 
+        quelles lettres sont correctes :
+    </p>
+        <ul>
+            <li>Celles correctements placées sont vert ;</li>
+            <li>Celles presentes mais mal placées sont en jaune ;</li>
+            <li>les autres sont absentes et sont en rouge</li>
+        </ul>
+  </div>
+</div> 
 </body>
 </html>

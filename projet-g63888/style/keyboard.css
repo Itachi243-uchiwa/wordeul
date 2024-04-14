@@ -1,0 +1,102 @@
+#keyboard {
+    position: absolute;
+    margin: 10px auto;
+    width: 420px;
+    height: 160px;
+    bottom: 0;
+    display: none;
+    animation: slideInFromBottom 1s ease-out forwards;
+
+}
+
+#clavier {
+    width: 100%;
+    /* Occupera tout l'espace disponible dans le clavier */
+    height: 100%;
+    /* Occupera tout l'espace disponible dans le clavier */
+    padding: 0;
+    /* Aucun padding pour éviter tout dépassement */
+    margin-top: 0;
+}
+
+#clavier button {
+    float: left;
+    width: 40px;
+    height: 52px;
+    line-height: 40px;
+    text-align: center;
+    color: #e5e5e5;
+    background-color: #e76161dc;
+    border: none;
+    border-radius: 5px;
+    margin: 1px;
+    font-size: 20px;
+}
+
+#clavier button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+}
+
+#clavier .btn {
+    clear: left;
+    margin-left: 20px;
+}
+
+#clavier .back {
+    margin-right: O;
+    width: 60px;
+}
+
+#clavier .enter {
+    clear: left;
+    width: 60px;
+    font-size: 10px;
+}
+
+#clavier button:hover {
+    position: relative;
+    top: 1px;
+    left: 1px;
+    border-color: #e5e5e5;
+    cursor: pointer;
+}
+
+@keyframes slideInFromBottom {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    25% {
+        transform: translateY(75%);
+        opacity: 0.25;
+    }
+
+    50% {
+        transform: translateY(50%);
+        opacity: 0.5;
+    }
+
+    75% {
+        transform: translateY(25%);
+        opacity: 0.75;
+    }
+
+    100% {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+
+#clavier button.present {
+    background-color: rgba(255, 255, 0, 0.4);
+}
+
+#clavier button.absent {
+    background-color: rgba(255, 0, 0, 0.4);
+}
+
+#clavier button.correct {
+    background-color: rgba(47, 255, 47, 0.4);
+}
