@@ -4,12 +4,9 @@
 const gameEl = getGameElement();
 let currentRowIndex = 0;
 let currentTileIndex = 0;
-const targetWord = "MANGE"
-const taille = targetWord.length;
 let tentativesActuel = 0;
 const tentativesMax = 6;
 
-createGrid(gameEl, tentativesMax, taille);
 // Ajout du gestionnaire d'événements keyup
 document.addEventListener('keyup', keyUpHandler);
 
@@ -58,7 +55,7 @@ function keyUpHandler(event) {
  * @param {string} letter - La lettre saisie.
  */
 function handleLetterInput(gameEl, letter) {
-	if (currentTileIndex < taille) {
+	if (currentTileIndex < targetWord.length) {
 		setLetter(gameEl, currentRowIndex, currentTileIndex, letter);
 		currentTileIndex++;
 	} else {
@@ -91,6 +88,8 @@ function handleBackspace(gameEl) {
 
 function handleEnterKeyPress(gameEl) {
 	const currentWord = getCurrentWord(gameEl);
+
+	if (findWord_dict(currentWord, dict)){
 	wellplaced(gameEl, currentWord);
 	badplaced(gameEl, currentWord);
 
@@ -101,24 +100,26 @@ function handleEnterKeyPress(gameEl) {
 	// Supprime la classe d'animation après un délai pour permettre la répétition
 	setTimeout(() => {
 		row.classList.remove('pulse-animation');
-	}, 500); // La durée de l'animation en millisecondes si nécessaire
-	// if (!dict.includes(currentWord)) {
-    //     console.log(`Mot non trouvé: ${currentWord}`);
-    //     gameEl.classList.add('shake-animation');
-	// 	tentativesActuel--;
-	// 	for (let i = 0; i < taille; i++) {
-	// 		gameEl.children[currentRowIndex].children[i].textContent = 'X';
-	// 		currentTileIndex = 0;
-	// 	}
-
-    //     return;
-    // }
+	}, 500); // La durée de l'animation en milliseconde
 	if (jeuTerminer(currentWord)) {
 		return;
 	}
 
 	currentRowIndex++;
-	currentTileIndex = 0;
+	currentTileIndex = 0;	
+}
+   else {
+		tentativesActuel--;
+		gameEl.classList.add('shake-animation');
+		setTimeout(() => {
+			gameEl.classList.remove('shake-animation');
+		}, 500);
+
+		for (let i = 0; i < targetWord.length; i++) {
+			gameEl.children[currentRowIndex].children[i].textContent = 'X';
+			currentTileIndex = 0; }
+   }
+
 }
 
 /**
@@ -137,7 +138,8 @@ function jeuTerminer(word) {
 		return true;
 	}
 
-	return false;
+	return false; 
+
 }
 
 /**
@@ -147,7 +149,7 @@ function jeuTerminer(word) {
  */
 function getCurrentWord(gameEl) {
 	let word = '';
-	for (let i = 0; i < taille; i++) {
+	for (let i = 0; i < targetWord.length; i++) {
 		word += gameEl.children[currentRowIndex].children[i].textContent;
 	}
 
@@ -161,10 +163,10 @@ function getCurrentWord(gameEl) {
  */
 // Sélectionnez tous les boutons du clavier
 function wellplaced(gameEl, word) {
-	for (let i = 0; i < taille; i++) {
+	for (let i = 0; i < targetWord.length; i++) {
 		if (targetWord[i] === word[i]) {
 			gameEl.children[currentRowIndex].children[i].classList.add('correct');
-	        findButtonByLetter(word[i]).classList.add('correct');
+			findButtonByLetter(word[i]).classList.add('correct');
 		}
 	}
 }
@@ -175,18 +177,18 @@ function wellplaced(gameEl, word) {
  * @param {string} word - Le mot actuellement saisi.
  */
 function badplaced(gameEl, word) {
-	const tab = new Array(taille).fill(false);
-	for (let i = 0; i < taille; i++) {
+	const tab = new Array(targetWord.length).fill(false);
+	for (let i = 0; i < targetWord.length; i++) {
 		if (targetWord[i] === word[i]) {
 			tab[i] = true;
 			// GameEl.children[currentRowIndex].children[i].classList.add('correct');
 		}
 	}
 
-	for (let j = 0; j < taille; j++) {
+	for (let j = 0; j < targetWord.length; j++) {
 		if (targetWord[j] !== word[j]) {
 			let letterFound = false;
-			for (let k = 0; k < taille; k++) {
+			for (let k = 0; k < targetWord.length; k++) {
 				if (!tab[k] && targetWord[k] === word[j]) {
 					tab[k] = true;
 					letterFound = true;
@@ -241,36 +243,40 @@ boutonFail.addEventListener('click', () => {
 });
 
 function createGrid(gameEl, numRows, wordLength) {
-    // Définir les styles CSS dynamiquement
-    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
+	// Définir les styles CSS dynamiquement
+	gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
 
-    for (let i = 0; i < numRows; i++) {
-        const row = document.createElement('div');
-        row.classList.add('row');
+	for (let i = 0; i < numRows; i++) {
+		const row = document.createElement('div');
+		row.classList.add('row');
 
-        for (let j = 0; j < wordLength; j++) {
-            const tile = document.createElement('div');
-            tile.classList.add('tile');
-            tile.textContent = "X";
+		for (let j = 0; j < wordLength; j++) {
+			const tile = document.createElement('div');
+			tile.classList.add('tile');
+			tile.textContent = "X";
 
-            row.appendChild(tile);
+			row.appendChild(tile);
 			row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
-        }
-        gameEl.appendChild(row);
-    }
+		}
+		gameEl.appendChild(row);
+	}
 }
 
 function findButtonByLetter(mot) {
-    let bouttonColored = null;
+	let bouttonColored = null;
 
-    // Parcourez chaque bouton du clavier virtuel avec forEach
-    buttons.forEach(button => {
-        // Comparez la lettre du bouton avec la lettre donnée
-        if (button.textContent === mot) {
-            bouttonColored = button;
-        }
-    });
+	// Parcourez chaque bouton du clavier virtuel avec forEach
+	buttons.forEach(button => {
+		// Comparez la lettre du bouton avec la lettre donnée
+		if (button.textContent === mot) {
+			bouttonColored = button;
+		}
+	});
 
-    return bouttonColored;
+	return bouttonColored;
 }
+
+function findWord_dict(word, dictionary){
+    return dictionary.includes(word); }
+
 

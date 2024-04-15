@@ -7,6 +7,7 @@
     height: 50%;
     left: 21%;
 }
+
 legend {
     font-size: 25px;
 
@@ -21,7 +22,8 @@ fieldset {
     background-color: rgba(255, 255, 255, 0.9);
     color: #888;
     border-radius: 4px;
-    margin-right: 10px; /* Ajouter une marge à droite pour espacer les fieldsets */
+    margin-right: 10px;
+    /* Ajouter une marge à droite pour espacer les fieldsets */
 }
 
 fieldset input {
@@ -31,6 +33,7 @@ fieldset input {
     color: #888;
     background-color: rgba(255, 255, 255, 0.1);
 }
+
 #btn {
     position: absolute;
     left: 0;
@@ -41,6 +44,7 @@ fieldset input {
     background-color: rgba(28, 94, 218, 0.863);
     color: black;
 }
+
 #btn1 {
     position: absolute;
     left: 11%;
@@ -59,7 +63,7 @@ fieldset input {
     top: 0;
     width: 20.9%;
     border-radius: 3px;
-    height: 79.5% ;
+    height: 79.5%;
     justify-content: center;
     align-items: center;
     grid-template-columns: 1fr;
@@ -68,13 +72,15 @@ fieldset input {
     background-size: cover;
 
 }
+
 main {
     position: relative;
     height: 100%;
     overflow: hidden;
 
 }
-.slide{
+
+.slide {
     display: none;
     width: 100%;
     height: 100%;
@@ -82,19 +88,21 @@ main {
     transition: opacity 0.5s ease;
     opacity: 0;
 }
+
 .slide.active {
     opacity: 1;
     display: block;
 }
+
 .ad {
     position: absolute;
     text-align: center;
     transform: translateY(-50%, -50%);
     padding: 10px;
-    top : 8%;
+    top: 8%;
     z-index: 1;
     left: 22%;
     font-size: 20px;
     display: block;
     color: rgba(240, 248, 255, 0.568);
-   }
+}

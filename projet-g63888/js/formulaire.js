@@ -4,23 +4,23 @@ const form = document.getElementById("configForm");
 const pub = document.getElementsByClassName('container');
 const key = document.getElementById("keyboard");
 
-document.getElementById("word").value = '*'.repeat(taille);
 
-form.addEventListener('submit', function(event) {
+form.addEventListener('submit', function (event) {
     event.preventDefault();
 
     if (!(event.target instanceof HTMLFormElement)) {
         throw Error("Unexpected");
-    } 
+    }
     const formData = new FormData(event.target);
 
     // Récupérer les valeurs des champs du formulaire
     let inputWord = formData.get('word');
     const numAttempts = formData.get('tentative');
 
-    inputWord = '*'.repeat(taille);
+    inputWord = '*'.repeat(targetWord.length);
 
-    initGame(gameEl, numAttempts, taille);
+    initGame(gameEl, numAttempts, targetWord.length);
+    createGrid(gameEl, tentativesMax, targetWord.length);
 });
 
 function initGame(game, tentative, mot) {
@@ -28,10 +28,10 @@ function initGame(game, tentative, mot) {
     game.style.display = 'grid';
     key.style.display = 'block';
     pub[0].style.left = '80%'; // Ajustez la valeur selon vos besoins
-    openModalBtn.style.right ='92%'
+    openModalBtn.style.right = '92%'
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const slides = document.querySelectorAll('.slide');
 
     let currentSlide = 0;
