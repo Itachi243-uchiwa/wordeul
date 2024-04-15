@@ -1,11 +1,10 @@
 'use strict';
 
 // Initialisation des variables globales
+let taille;
 const gameEl = getGameElement();
 let currentRowIndex = 0;
 let currentTileIndex = 0;
-const targetWord = "MANGE"
-const taille = targetWord.length;
 let tentativesActuel = 0;
 const tentativesMax = 6;
 
@@ -101,18 +100,8 @@ function handleEnterKeyPress(gameEl) {
 	// Supprime la classe d'animation après un délai pour permettre la répétition
 	setTimeout(() => {
 		row.classList.remove('pulse-animation');
-	}, 500); // La durée de l'animation en millisecondes si nécessaire
-	// if (!dict.includes(currentWord)) {
-    //     console.log(`Mot non trouvé: ${currentWord}`);
-    //     gameEl.classList.add('shake-animation');
-	// 	tentativesActuel--;
-	// 	for (let i = 0; i < taille; i++) {
-	// 		gameEl.children[currentRowIndex].children[i].textContent = 'X';
-	// 		currentTileIndex = 0;
-	// 	}
+	}, 500);
 
-    //     return;
-    // }
 	if (jeuTerminer(currentWord)) {
 		return;
 	}

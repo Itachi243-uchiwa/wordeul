@@ -4,7 +4,7 @@ const form = document.getElementById("configForm");
 const pub = document.getElementsByClassName('container');
 const key = document.getElementById("keyboard");
 
-document.getElementById("word").value = '*'.repeat(taille);
+document.getElementById("word").value = targetWord;
 
 form.addEventListener('submit', function(event) {
     event.preventDefault();
@@ -19,6 +19,7 @@ form.addEventListener('submit', function(event) {
     const numAttempts = formData.get('tentative');
 
     inputWord = '*'.repeat(taille);
+    createGrid(gameEl, tentativesMax, taille);
 
     initGame(gameEl, numAttempts, taille);
 });
@@ -50,8 +51,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     startSlideshow();
 });
-// Sélectionnez le bouton
-const randomWordButton = document.getElementById("btn1");
+function createGrid(gameEl, numRows, wordLength) {
+    // Définir les styles CSS dynamiquement
+    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
+
+    for (let i = 0; i < numRows; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+
+        for (let j = 0; j < wordLength; j++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            tile.textContent = "X";
+
+            row.appendChild(tile);
+			row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
+        }
+        gameEl.appendChild(row);
+    }
+}
 
 
 
