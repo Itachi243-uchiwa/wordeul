@@ -4,6 +4,10 @@ const form = document.getElementById("configForm");
 const pub = document.getElementById('container');
 const key = document.getElementById("keyboard");
 
+<<<<<<< HEAD
+=======
+document.getElementById("word").value = targetWord;
+>>>>>>> b68a18fe6b9d22d772e9ca925f6076e4ea4e895f
 
 form.addEventListener('submit', function (event) {
     event.preventDefault();
@@ -17,7 +21,12 @@ form.addEventListener('submit', function (event) {
     let inputWord = formData.get('word');
     const numAttempts = formData.get('tentative');
 
+<<<<<<< HEAD
     inputWord = '*'.repeat(targetWord.length);
+=======
+    inputWord = '*'.repeat(taille);
+    createGrid(gameEl, tentativesMax, taille);
+>>>>>>> b68a18fe6b9d22d772e9ca925f6076e4ea4e895f
 
     initGame(gameEl, numAttempts, targetWord.length);
     createGrid(gameEl, tentativesMax, targetWord.length);
@@ -50,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startSlideshow();
 });
+<<<<<<< HEAD
 
 // Fonction pour afficher la publicité
 function afficherPublicite() {
@@ -78,6 +88,27 @@ function cacherPublicite() {
 // Lancer le cycle d'affichage de la publicité
 afficherPublicite();
 
+=======
+function createGrid(gameEl, numRows, wordLength) {
+    // Définir les styles CSS dynamiquement
+    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
+
+    for (let i = 0; i < numRows; i++) {
+        const row = document.createElement('div');
+        row.classList.add('row');
+
+        for (let j = 0; j < wordLength; j++) {
+            const tile = document.createElement('div');
+            tile.classList.add('tile');
+            tile.textContent = "X";
+
+            row.appendChild(tile);
+			row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
+        }
+        gameEl.appendChild(row);
+    }
+}
+>>>>>>> b68a18fe6b9d22d772e9ca925f6076e4ea4e895f
 
 
 
