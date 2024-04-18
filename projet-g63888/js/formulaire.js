@@ -1,7 +1,7 @@
 "use strict";
 
 const form = document.getElementById("configForm");
-const pub = document.getElementsByClassName('container');
+const pub = document.getElementById('container');
 const key = document.getElementById("keyboard");
 
 
@@ -27,7 +27,7 @@ function initGame(game, tentative, mot) {
     form.style.display = 'none';
     game.style.display = 'grid';
     key.style.display = 'block';
-    pub[0].style.left = '80%'; // Ajustez la valeur selon vos besoins
+    pub.style.left = '80%';
     openModalBtn.style.right = '92%'
 }
 
@@ -50,8 +50,34 @@ document.addEventListener('DOMContentLoaded', function () {
 
     startSlideshow();
 });
-// Sélectionnez le bouton
-const randomWordButton = document.getElementById("btn1");
+
+// Fonction pour afficher la publicité
+function afficherPublicite() {
+    pub.style.transition = "opacity 4s"; // Définit la transition de 1 seconde
+    pub.style.opacity = "1";
+    // pub.style.display = 'grid';
+    console.log("La publicité s'affiche");
+    // Définir un délai pour la disparition de la publicité
+    setTimeout(() => {
+        cacherPublicite();
+    }, 30000); // La publicité reste affichée pendant 20 secondes
+}
+
+// Fonction pour cacher la publicité
+function cacherPublicite() {
+    pub.style.transition = "opacity 4s"; // Définit la transition de 1 seconde
+    pub.style.opacity = "0";
+    // pub.style.display = 'none';
+    console.log("La publicité disparaît");
+    // Définir un délai pour l'affichage de la publicité suivante
+    setTimeout(() => {
+        afficherPublicite();
+    }, 20000); // La publicité réapparaît après 5 secondes
+}
+
+// Lancer le cycle d'affichage de la publicité
+afficherPublicite();
+
 
 
 

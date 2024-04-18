@@ -20,5 +20,8 @@
     "eslint-plugin-react": "^7.34.1",
     "globals": "^15.0.0",
     "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
   }
 }

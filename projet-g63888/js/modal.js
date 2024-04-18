@@ -18,3 +18,8 @@ closeModalBtn.addEventListener('click', function () {
     }, 1000);
 
 });
+
+const boutonRestart = document.getElementById('restart');
+boutonRestart.addEventListener('click', function() {
+    location.reload();
+})

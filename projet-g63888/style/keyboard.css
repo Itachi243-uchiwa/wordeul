@@ -25,8 +25,8 @@
     height: 52px;
     line-height: 40px;
     text-align: center;
-    color: #e5e5e5;
-    background-color: #e76161dc;
+    color: rgba(0, 0, 0, 0.459);
+    background-color: rgb(164, 228, 250,1);
     border: none;
     border-radius: 5px;
     margin: 1px;

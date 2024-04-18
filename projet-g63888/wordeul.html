@@ -19,25 +19,28 @@
 
 <body>
     <h1>Wordeul</h1>
+    <video id="mp4" autoplay muted loop><source src="background.mp4" type="video/mp4"></video>
     <section id="game"></section>
     <div id="winModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p id="winMsg">Félicitations ! Vous avez gagné !</p>
             <img class="sticker" src="win3.gif" alt="Win">
+            <button id="restart" type="button">Restart</button>
         </div>
     </div>
     <div id="failModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
             <p id="failMsg">Dommage ! Vous avez perdu.</p>
+            <button id="restart" type="button">Restart</button>
         </div>
     </div>
     <form id="configForm">
         <legend>Configuration du Jeu</legend><br>
         <fieldset>
             <label for="word">Mot à deviner</label>
-            <input type="text" id="word" name="word"><br>
+            <input type="password" id="word" name="word"><br>
         </fieldset><br><br>
         <fieldset>
             <label for="tentative">Nombres de Tentatives</label>
@@ -46,7 +49,7 @@
         <button type="submit" id="btn">Go</button>
         <button type="button" id="btn1">Mot hasard</button>
     </form>
-    <div class="container">
+    <aside id="container">
         <main>
             <video src="madara1.mp4" class="slide active" autoplay muted loop></video>
             <video src="itachi.mp4" class="slide" autoplay muted loop></video>
@@ -56,7 +59,7 @@
             <video src="uchiha.mp4" class="slide" autoplay muted loop></video>
         </main>
         <aside class="ad">Publicité Factice</aside>
-    </div>
+    </aside>
     <div id="keyboard">
         <ul id="clavier"></ul>
     </div>

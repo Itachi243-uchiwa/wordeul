@@ -90,8 +90,7 @@ function handleEnterKeyPress(gameEl) {
 	const currentWord = getCurrentWord(gameEl);
 
 	if (findWord_dict(currentWord, dict)){
-	wellplaced(gameEl, currentWord);
-	badplaced(gameEl, currentWord);
+		well_or_bad_placed(gameEl, currentWord);
 
 	// La classe d'animation
 	const row = gameEl.children[currentRowIndex];
@@ -102,6 +101,7 @@ function handleEnterKeyPress(gameEl) {
 		row.classList.remove('pulse-animation');
 	}, 500); // La durée de l'animation en milliseconde
 	if (jeuTerminer(currentWord)) {
+		document.removeEventListener('keyup', keyUpHandler);
 		return;
 	}
 
@@ -157,31 +157,17 @@ function getCurrentWord(gameEl) {
 }
 
 /**
- * Marque les lettres correctement placées dans la grille.
- * @param {HTMLElement} gameEl - L'élément DOM représentant le jeu.
- * @param {string} word - Le mot actuellement saisi.
- */
-// Sélectionnez tous les boutons du clavier
-function wellplaced(gameEl, word) {
-	for (let i = 0; i < targetWord.length; i++) {
-		if (targetWord[i] === word[i]) {
-			gameEl.children[currentRowIndex].children[i].classList.add('correct');
-			findButtonByLetter(word[i]).classList.add('correct');
-		}
-	}
-}
-
-/**
  * Marque les lettres mal placées dans la grille.
  * @param {HTMLElement} gameEl - L'élément DOM représentant le jeu.
  * @param {string} word - Le mot actuellement saisi.
  */
-function badplaced(gameEl, word) {
+function well_or_bad_placed(gameEl, word) {
 	const tab = new Array(targetWord.length).fill(false);
 	for (let i = 0; i < targetWord.length; i++) {
 		if (targetWord[i] === word[i]) {
 			tab[i] = true;
-			// GameEl.children[currentRowIndex].children[i].classList.add('correct');
+			gameEl.children[currentRowIndex].children[i].classList.add('correct');
+			findButtonByLetter(word[i]).classList.add('correct');
 		}
 	}
 
