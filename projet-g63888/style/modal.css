@@ -1,7 +1,5 @@
-/* Style pour la modal */
 .mdl {
-    display: none;
-    /* Par défaut, la modal est cachée */
+    display: none;  /* Par défaut, la modal est cachée */
     position: fixed;
     z-index: 1;
     left: 25%;

@@ -1,6 +1,6 @@
 {
-  "complilerOptions": {
-    "checksJs: true,
+    "compilerOptions": {
+    "checkJs": true,
     "target": "ES2016"
-  }
-}
+    },
+    }
