@@ -1,7 +1,8 @@
 "use strict";
+/*eslint init-declarations: ["error", "never"]*/
 
-let dict = null;
-let targetWord = null;
+let dict;
+let targetWord;
 
 /**
   * @param {number} length entre 6 et 10

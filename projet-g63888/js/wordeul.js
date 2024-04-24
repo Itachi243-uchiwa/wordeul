@@ -6,6 +6,9 @@ let currentRowIndex = 0;
 let currentTileIndex = 0;
 let tentativesActuel = 0;
 const tentativesMax = 5;
+const sonVictory = new Audio("applaudissement.wav");
+const sonWorddown = new Audio("buzzer.mp3");
+const sonDefeat = new Audio("downer_noise.mp3");
 
 // Ajout du gestionnaire d'événements keyup
 document.addEventListener("keyup", keyUpHandler);
@@ -81,7 +84,6 @@ function handleBackspace() {
 /**
  * Traite l'appui sur la touche Enter.
  */
-
 function handleEnterKeyPress() {
     const currentWord = getCurrentWord();
 
@@ -106,9 +108,10 @@ function handleEnterKeyPress() {
     } else {
         tentativesActuel--;
         gameEl.classList.add("shake-animation");
+        sonWorddown.play();
         setTimeout(() => {
             gameEl.classList.remove("shake-animation");
-        }, 500);
+        }, 1000);
 
         for (let i = 0; i < targetWord.length; i++) {
             gameEl.children[currentRowIndex].children[i].textContent = "X";
@@ -124,11 +127,13 @@ function handleEnterKeyPress() {
  */
 function jeuTerminer(word) {
     if (word === targetWord) {
+        sonVictory.play();
         victoryModal();
         return true;
     }
 
     if (tentativesActuel === tentativesMax) {
+        sonDefeat.play();
         defeatModal();
         return true;
     }
@@ -172,7 +177,6 @@ function well_or_bad_placed(word) {
                     letterFound = true;
                     gameEl.children[currentRowIndex].children[j].classList.add("present");
                     findButtonByLetter(word[j]).classList.add("present");
-                    // GameEl.children[currentRowIndex].children[k].classList.add('present');
                     break;
                 }
             }
@@ -219,30 +223,6 @@ boutonWin.addEventListener("click", () => {
 boutonFail.addEventListener("click", () => {
     defaite.style.display = "none";
 });
-
-/**
- * reçoit 3 parametres numeros lignes et colonnes et l'element html pour créer la grille du jeu
- * @param {number} numRows
- * @param {number} wordLength
- */
-function createGrid(numRows, wordLength) {
-    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
-
-    for (let i = 0; i < numRows; i++) {
-        const row = document.createElement("div");
-        row.classList.add("row");
-
-        for (let j = 0; j < wordLength; j++) {
-            const tile = document.createElement("div");
-            tile.classList.add("tile");
-            tile.textContent = "X";
-
-            row.appendChild(tile);
-            row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
-        }
-        gameEl.appendChild(row);
-    }
-}
 
 /**
  * @param {string} mot

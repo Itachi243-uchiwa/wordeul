@@ -2,6 +2,7 @@
 
 // Sélectionnez le conteneur du clavier
 const keyboardContainer = document.getElementById("clavier");
+const sonTouche = new Audio("click.mp3");
 
 // Liste des touches du clavier
 const keyboardKeys = [
@@ -41,13 +42,13 @@ const buttons = document.querySelectorAll("#clavier button");
 // Ajoutez un gestionnaire d'événements "click" à chaque bouton
 buttons.forEach((button) => {
     button.addEventListener("click", () => {
+        sonTouche.play();
         const buttonText = button.textContent;
-        console.log(button);
 
         if (buttonText === "Enter") {
             tentativesActuel++;
             handleEnterKeyPress();
-        } else if (buttonText === "\u232b") { // Correction ici
+        } else if (buttonText === "\u232b") {
             handleBackspace();
         } else if (/[a-zA-Z]/.test(buttonText)) {
             handleLetterInput(buttonText.toUpperCase());

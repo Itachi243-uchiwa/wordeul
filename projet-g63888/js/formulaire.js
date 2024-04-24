@@ -1,3 +1,4 @@
+// @ts-nocheck
 "use strict";
 
 const form = document.getElementById("configForm");
@@ -14,25 +15,54 @@ form.addEventListener("submit", function (event) {
 
     // Récupérer les valeurs des champs du formulaire
     let inputWord = formData.get("word");
-    const tentativesMax = Number(formData.get("tentative"));
+    const numAttempts = formData.get("tentative");
 
     inputWord = "*".repeat(targetWord.length);
 
-    initGame(gameEl, inputWord, targetWord.length);
-    createGrid(tentativesMax, targetWord.length);
+    // @ts-ignore
+    initGame(gameEl, tentativesMax, targetWord.length);
 });
 
 /**
- * @param {HTMLElement} gameEl
- * @param {FormDataEntryValue} _tentative
- * @param {any} _mot
+ * @param {HTMLElement} game
+ * @param {FormDataEntryValue} tentative
+ * @param {any} mot
  */
-function initGame(gameEl, _tentative, _mot) {
+function initGame(game, tentative, wordLength) {
+    createGrid(tentative, wordLength);
     form.style.display = "none";
-    gameEl.style.display = "grid";
+    game.style.display = "grid";
     key.style.display = "block";
+    gameEl.classList.add("fadeIn");
+    setTimeout(() => {
+        gameEl.classList.remove("fadeIn");
+    }, 2000);
     pub.style.left = "80%";
     openModalBtn.style.right = "92%";
+}
+
+/**
+ * reçoit 2 parametres numeros lignes et colonnes et l'element html pour créer la grille du jeu
+ * @param {number} numRows
+ * @param {number} wordLength
+ */
+function createGrid(numRows, wordLength) {
+    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
+
+    for (let i = 0; i < numRows; i++) {
+        const row = document.createElement("div");
+        row.classList.add("row");
+
+        for (let j = 0; j < wordLength; j++) {
+            const tile = document.createElement("div");
+            tile.classList.add("tile");
+            tile.textContent = "X";
+
+            row.appendChild(tile);
+            row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
+        }
+        gameEl.appendChild(row);
+    }
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -75,8 +105,19 @@ function cacherPublicite() {
     console.log("La publicité disparaît");
     setTimeout(() => {
         afficherPublicite();
-    }, 15000); // La publicité réapparaît après 15 secondes
+    }, 15000); // La publicité réapparaît après 5 secondes
 }
 
 // Lancer le cycle d'affichage de la publicité
 afficherPublicite();
+
+// boutton pour recommencer le jeu
+const boutonsRestart = document.querySelectorAll("#restart");
+
+boutonsRestart.forEach((boutonRestart) => {
+    boutonRestart.addEventListener("click", function(e) {
+        e.preventDefault();
+        boutton.click();
+        form.submit();
+    });
+});
