@@ -3,6 +3,10 @@
   --text-color: white;
   --tile-background-color: rgba(255, 255, 255, 0.2);
 }
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('PressStart2P-Regular.ttf') format('truetype');
+}
 
 body {
   position: relative;
@@ -10,7 +14,8 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Press Start 2P', sans-serif;
+  font-size: 15px;
   background-color: var(--background-color);
   color: var(--text-color);
   justify-content: center;
@@ -29,14 +34,14 @@ body {
 h1 {
   position: absolute;
   font-size: 3em;
-  color: rgb(164, 228, 250,1);
+  color: rgb(34, 218, 202,0.8);
 
 }
 
 #game {
   position: absolute;
   display: none;
-  grid-template-rows: repeat(5, 1fr);
+  /* grid-template-rows: repeat(5, 1fr); */
   grid-gap: 3px;
   padding: 10px;
   user-select: none;
@@ -82,21 +87,25 @@ h1 {
 }
 
 @keyframes pulseAnimation {
-  0% {
-    transform: scale(1);
+  from {
+    transform: rotate(0deg);
   }
-
-  50% {
-    transform: scale(1.1);
-  }
-
-  100% {
-    transform: scale(1);
+  to {
+    transform: rotate(360deg);
   }
 }
-
+@keyframes rotateTile {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(200deg);
+  }
+}
+.rotate {
+  animation: rotateTile 1s linear; }
 .pulse-animation {
-  animation: pulseAnimation 0.5s ease-in-out;
+  animation: pulseAnimation 1s infinite;
 }
 
 .modal {
@@ -116,7 +125,7 @@ h1 {
   background-color: rgba(255, 255, 255, 0.1);
   margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 4px solid #059c05d2;
   border-radius: 10x;
   width: 40%;
   height: 40%;
@@ -125,8 +134,8 @@ h1 {
 }
 
 .modal-content p {
-  color: cyan;
-  font-size: 25px;
+  color: #059c05d2;
+  font-size: 20px;
 
 }
 

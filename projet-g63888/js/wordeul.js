@@ -5,7 +5,6 @@ const gameEl = getGameElement();
 let currentRowIndex = 0;
 let currentTileIndex = 0;
 let tentativesActuel = 0;
-const tentativesMax = 5;
 const sonVictory = new Audio("applaudissement.wav");
 const sonWorddown = new Audio("buzzer.mp3");
 const sonDefeat = new Audio("downer_noise.mp3");
@@ -92,12 +91,12 @@ function handleEnterKeyPress() {
 
         // La classe d'animation
         const row = gameEl.children[currentRowIndex];
-        row.classList.add("pulse-animation");
-
-        // Supprime la classe d'animation après un délai pour permettre la répétition
-        setTimeout(() => {
-            row.classList.remove("pulse-animation");
-        }, 500);
+        for (let i = 0; i < targetWord.length; i++) {
+            row.children[i].classList.add("rotate");
+            setTimeout(() => {
+                row.children[i].classList.remove("rotate");
+            }, 1000);
+        }
         if (jeuTerminer(currentWord)) {
             document.removeEventListener("keyup", keyUpHandler);
             return;
@@ -107,8 +106,8 @@ function handleEnterKeyPress() {
         currentTileIndex = 0;
     } else {
         tentativesActuel--;
-        gameEl.classList.add("shake-animation");
         sonWorddown.play();
+        gameEl.classList.add("shake-animation");
         setTimeout(() => {
             gameEl.classList.remove("shake-animation");
         }, 1000);
@@ -127,12 +126,11 @@ function handleEnterKeyPress() {
  */
 function jeuTerminer(word) {
     if (word === targetWord) {
+        gameEl.children[currentRowIndex].classList.add("pulse-animation");
         sonVictory.play();
         victoryModal();
         return true;
-    }
-
-    if (tentativesActuel === tentativesMax) {
+    } else if (tentativesActuel >= tentativesMax) {
         sonDefeat.play();
         defeatModal();
         return true;
@@ -212,7 +210,8 @@ function victoryModal() {
 function defeatModal() {
     const failMsg = document.getElementById("failMsg");
     const coloredWord = `<span class="word">${targetWord}</span>`;
-    failMsg.innerHTML = `Dommage, Vous avez perdu! <br>Tentatives : 5/5 <br>Le Mot était  ${coloredWord}`;
+    failMsg.innerHTML = `Dommage, Vous avez perdu! <br>Tentatives : ${tentativesMax}/${tentativesMax} 
+                        <br><br>Le Mot était  ${coloredWord}`;
     defaite.style.display = "block";
 }
 

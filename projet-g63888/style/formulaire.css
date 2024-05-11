@@ -6,7 +6,7 @@
     width: 50%;
     height: 50%;
     left: 21%;
-}
+ }
 
 legend {
     font-size: 25px;
@@ -20,9 +20,9 @@ fieldset {
     height: 20%;
     border: 1px solid #888;
     background-color: rgba(255, 255, 255, 0.9);
-    color: #888;
     border-radius: 4px;
     margin-right: 10px;
+    color: #888;
     /* Ajouter une marge à droite pour espacer les fieldsets */
 }
 
@@ -40,20 +40,20 @@ fieldset input {
     bottom: 0;
     width: 10%;
     height: 13%;
-    border-radius: 5px;
+    border-radius: 15px;
+    font-family: 'Press start 2P';
     background-color: rgba(28, 94, 218, 0.863);
-    color: white;
 }
 
 #btn1 {
     position: absolute;
-    left: 11%;
+    left: 10%;
     bottom: 0;
-    width: 10%;
+    width: 15%;
     height: 13%;
-    border-radius: 5px;
+    border-radius: 15px;
+    font-family: 'Press start 2P';
     background-color: rgba(21, 228, 48, 0.863);
-    color: white;
 }
 
 #container {
@@ -78,6 +78,7 @@ main {
     position: relative;
     height: 100%;
     overflow: hidden;
+    justify-content: center;
 
 }
 
@@ -102,8 +103,8 @@ main {
     padding: 10px;
     top: 8%;
     z-index: 1;
-    left: 22%;
+    left: 17%;
+    color: #8888889d;
     font-size: 20px;
     display: block;
-    color: rgba(240, 248, 255, 0.568);
 }

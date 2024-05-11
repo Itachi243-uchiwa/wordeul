@@ -3,6 +3,7 @@
 
 let dict;
 let targetWord;
+let tentativesMax;
 
 /**
   * @param {number} length entre 6 et 10
@@ -21,8 +22,9 @@ async function _getDict(length, firstLetter = null) {
         .then((r) => r.split("\n"))
         .catch((error) => console.error("Erreur pour rÃ©cupÃ©rer le dictionnaire."));
 }
-
-_getDict(6).then((result) => {
+const length_mot = Math.floor(Math.random() * (10 - 6 + 1)) + 6;
+console.log(length_mot);
+_getDict(length_mot).then((result) => {
     dict = result;
     if (!dict) {
         throw Error("Dictionnaire non chargé.");

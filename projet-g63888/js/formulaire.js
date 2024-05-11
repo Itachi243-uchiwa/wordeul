@@ -4,6 +4,7 @@
 const form = document.getElementById("configForm");
 const pub = document.getElementById("container");
 const key = document.getElementById("keyboard");
+const h1 = document.querySelector("h1");
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -12,15 +13,10 @@ form.addEventListener("submit", function (event) {
         throw Error("Unexpected");
     }
     const formData = new FormData(event.target);
+    tentativesMax = formData.get("tentative");
+    const inputWord = formData.get("word").toString();
 
-    // Récupérer les valeurs des champs du formulaire
-    let inputWord = formData.get("word");
-    const numAttempts = formData.get("tentative");
-
-    inputWord = "*".repeat(targetWord.length);
-
-    // @ts-ignore
-    initGame(gameEl, tentativesMax, targetWord.length);
+    initGame(tentativesMax, inputWord.length);
 });
 
 /**
@@ -28,10 +24,11 @@ form.addEventListener("submit", function (event) {
  * @param {FormDataEntryValue} tentative
  * @param {any} mot
  */
-function initGame(game, tentative, wordLength) {
+function initGame(tentative, wordLength) {
     createGrid(tentative, wordLength);
+    h1.style.color = "Yellow";
     form.style.display = "none";
-    game.style.display = "grid";
+    gameEl.style.display = "grid";
     key.style.display = "block";
     gameEl.classList.add("fadeIn");
     setTimeout(() => {
