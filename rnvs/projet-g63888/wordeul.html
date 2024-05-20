@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wordeul</title>
+    <link rel="stylesheet" href="style/wordeul.css">
+    <link rel="stylesheet" href="style/formulaire.css">
+    <link rel="stylesheet" href="style/keyboard.css">
+    <link rel="stylesheet" href="style/modal.css">
+    <script src="js/dict.js" defer></script>
+    <script src="js/wordeul.js" defer></script>
+    <script src="js/formulaire.js" defer></script>
+    <script src="js/keyboard.js" defer></script>
+    <script src="js/modal.js" defer></script>
+
+</head>
+
+<body>
+    <h1>Wordeul</h1>
+    <video id="mp4" autoplay muted loop><source src="background.mp4" type="video/mp4"></video>
+    <section id="game"></section>
+    <div id="winModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="winMsg">Félicitations ! Vous avez gagné !</p>
+            <img class="sticker" src="win3.gif" alt="Win">
+            <button id="restart" type="button">Restart</button>
+        </div>
+    </div>
+    <div id="failModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p id="failMsg">Dommage ! Vous avez perdu.</p>
+            <button id="restart" type="button">Restart</button>
+        </div>
+    </div>
+    <form id="configForm">
+        <!-- rnvs : legend interdit comme enfant de form -->
+        <legend>Configuration du Jeu</legend><br>
+        <fieldset>
+            <!-- rnvs : fieldset "doit" avoir une legend comme 1er enfant -->
+            <label for="word">Mot à deviner</label>
+            <input type="password" id="word" name="word"><br>
+        </fieldset><br><br>
+        <fieldset>
+            <label for="tentative">Nombres de Tentatives</label>
+            <input type="number" id="tentative" name="tentative">
+        </fieldset><br>
+        <button type="submit" id="btn">Go</button>
+        <button type="button" id="btn1">Mot hasard</button>
+    </form>
+    <aside id="container">
+        <main><a href="https://naruto-official.com/fr">
+            <video src="madara1.mp4" class="slide active" autoplay muted loop></video>
+            <video src="itachi.mp4" class="slide" autoplay muted loop></video>
+            <video src="madara2.mp4" class="slide" autoplay muted loop></video>
+            <video src="madara4.mp4" class="slide" autoplay muted loop></video>
+            <video src="itachi1.mp4" class="slide" autoplay muted loop></video>
+            <video src="uchiha.mp4" class="slide" autoplay muted loop></video>
+        </a></main>
+        <aside class="ad">Publicité</aside>
+    </aside>
+    <div id="keyboard">
+        <ul id="clavier"></ul>
+    </div>
+
+    <button id="open">Instructions</button>
+    <div id="myModal" class="mdl">
+        <div class="modal-content-p">
+            <span id="fermer">&times;</span>
+            <h2>But du Jeu</h2>
+            <p>Le Joueur donne un mot et confirme avec Enter. si
+                si le mot se trouve au dictionnaire, l'ordinateur accepte le mot et indique
+                quelles lettres sont correctes :
+            </p>
+            <ul>
+                <li>Celles correctements placées sont vert ;</li>
+                <li>Celles presentes mais mal placées sont en jaune ;</li>
+                <li>les autres sont absentes et sont en rouge</li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>

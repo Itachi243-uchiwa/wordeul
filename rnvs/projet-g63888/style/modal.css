@@ -1,0 +1,95 @@
+@font-face {
+    font-family: 'Press Start 2P';
+    src: url('PressStart2P-Regular.ttf') format('truetype');
+}
+.mdl {
+    display: none;  /* Par défaut, la modal est cachée */
+    position: fixed;
+    z-index: 1;
+    left: 25%;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    overflow: auto;
+    animation-name: modalFadeIn;
+    animation-duration: 1s;
+}
+
+/* Style pour le contenu de la modal */
+.modal-content-p {
+    color: black;
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Style pour le bouton de fermeture */
+#fermer {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+#fermer:hover,
+#fermer:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#open {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    height: 30px;
+    background-color: rgb(248, 243, 243, 0.1);
+    border: 1px solid rgba(248, 243, 243, 0.1);
+    border-radius: 4px;
+    color: antiquewhite;
+    transition: transform 0.3s ease;
+}
+
+#open:hover,
+#open:active {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+/* Animation pour l'apparition de la modal */
+@keyframes modalFadeIn {
+    from {
+        top: -300px;
+        /* Position de départ en haut */
+        opacity: 0;
+        /* Opacité initiale */
+    }
+
+    to {
+        top: 0;
+        /* Position finale */
+        opacity: 1;
+        /* Opacité finale */
+    }
+
+}
+
+/* Animation pour la fermeture de la modal */
+@keyframes modalFadeOut {
+    from {
+        top: 0;
+        /* Position de départ */
+        opacity: 1;
+        /* Opacité initiale */
+    }
+
+    to {
+        top: 300px;
+        /* Position finale en bas */
+        opacity: 0;
+        /* Opacité finale */
+    }
+
+}
