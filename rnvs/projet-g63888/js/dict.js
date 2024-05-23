@@ -1,5 +1,4 @@
 "use strict";
-
 /*eslint init-declarations: ["error", "never"]*/
 
 let dict;
@@ -7,7 +6,6 @@ let targetWord;
 let tentativesMax;
 
 /**
->>>>>>> 098cbeba10295465dfd5d394f59f0060353b3abb
   * @param {number} length entre 6 et 10
   * @param {string} firstLetter entre A et Z
   */
@@ -24,6 +22,8 @@ async function _getDict(length, firstLetter = null) {
         .then((r) => r.split("\n"))
         .catch((error) => console.error("Erreur pour rÃ©cupÃ©rer le dictionnaire."));
 }
+
+// rnvs : un seul dictionnaire chargé
 const length_mot = Math.floor(Math.random() * (10 - 6 + 1)) + 6;
 console.log(length_mot);
 _getDict(length_mot).then((result) => {
@@ -48,12 +48,11 @@ function hasard(dico) {
     return dico[indexAleatoire];
 }
 const boutton = document.getElementById("btn1");
-boutton.addEventListener("click", function(e) {
+boutton.addEventListener("click", function (e) {
     e.preventDefault();
     targetWord = hasard(dict);
-    const taille = targetWord.length;
     // @ts-ignore
     document.getElementById("word").value = targetWord;
     console.log(targetWord);
 })
-;
+    ;

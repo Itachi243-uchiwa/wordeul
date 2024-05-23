@@ -6,7 +6,7 @@
     width: 50%;
     height: 50%;
     left: 21%;
- }
+}
 
 legend {
     font-size: 25px;
@@ -56,6 +56,7 @@ fieldset input {
     background-color: rgba(21, 228, 48, 0.863);
 }
 
+/* rnvs : énoncé demande d'utiliser grid css pour mettre en page le document, pas juste une portion de celui-ci. de plus ici, la publicité ne passe pas de gauche à droite à l'aide de grid css, mais en changeant la propriété left de son conteneur => mise en page grid pas comme demandé dans l'énoncé */
 #container {
     display: grid;
     position: absolute;

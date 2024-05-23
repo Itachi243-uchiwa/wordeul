@@ -46,6 +46,7 @@ buttons.forEach((button) => {
         const buttonText = button.textContent;
 
         if (buttonText === "Enter") {
+            // rnvs : pas de vérification si ligne complète
             tentativesActuel++;
             handleEnterKeyPress();
         } else if (buttonText === "\u232b") {

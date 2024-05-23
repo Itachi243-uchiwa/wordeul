@@ -7,24 +7,23 @@ const key = document.getElementById("keyboard");
 const h1 = document.querySelector("h1");
 
 form.addEventListener("submit", function (event) {
-
     event.preventDefault();
 
     if (!(event.target instanceof HTMLFormElement)) {
         throw Error("Unexpected");
     }
     const formData = new FormData(event.target);
+    // rnvs : possible de mettre 0
     tentativesMax = formData.get("tentative");
+    // rnvs : possible de mettre mot vide
+    // rnvs : pas de vérification si dans dictionnaire
     const inputWord = formData.get("word").toString();
 
-    // Récupérer les valeurs des champs du formulaire
-    let inputWord = formData.get('word');
-    const numAttempts = formData.get('tentative');
+    // rnvs : la valeur de inputWord n'est pas utilisée !
+    initGame(tentativesMax, inputWord.length);
 
-
-    initGame(gameEl, numAttempts, targetWord.length);
-    createGrid(gameEl, tentativesMax, targetWord.length);
-
+    // rnvs : ajout
+    targetWord = inputWord.toLocaleUpperCase();
 });
 
 /**
@@ -90,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
     startSlideshow();
 });
 
+// rnvs : manque documentation au format jsdoc
 // Fonction pour afficher la publicité
 function afficherPublicite() {
     pub.style.transition = "opacity 4s";
@@ -102,6 +102,7 @@ function afficherPublicite() {
     }, 30000); // La publicité reste affichée pendant 30 secondes
 }
 
+// rnvs : manque documentation au format jsdoc
 // Fonction pour cacher la publicité
 function cacherPublicite() {
     pub.style.transition = "opacity 4s"; // Définit la transition de 1 seconde
@@ -116,32 +117,11 @@ function cacherPublicite() {
 // Lancer le cycle d'affichage de la publicité
 afficherPublicite();
 
-function createGrid(gameEl, numRows, wordLength) {
-    // Définir les styles CSS dynamiquement
-    gameEl.style.gridTemplateRows = `repeat(${numRows}, 1fr)`;
-
-    for (let i = 0; i < numRows; i++) {
-        const row = document.createElement('div');
-        row.classList.add('row');
-
-        for (let j = 0; j < wordLength; j++) {
-            const tile = document.createElement('div');
-            tile.classList.add('tile');
-            tile.textContent = "X";
-
-            row.appendChild(tile);
-			row.style.gridTemplateColumns = `repeat(${wordLength}, 1fr)`;
-        }
-        gameEl.appendChild(row);
-    }
-}
-
-
 // boutton pour recommencer le jeu
 const boutonsRestart = document.querySelectorAll("#restart");
 
 boutonsRestart.forEach((boutonRestart) => {
-    boutonRestart.addEventListener("click", function(e) {
+    boutonRestart.addEventListener("click", function (e) {
         e.preventDefault();
         boutton.click();
         form.submit();

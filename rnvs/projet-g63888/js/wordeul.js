@@ -10,6 +10,7 @@ const sonWorddown = new Audio("buzzer.mp3");
 const sonDefeat = new Audio("downer_noise.mp3");
 
 // Ajout du gestionnaire d'événements keyup
+// rnvs : l'association ci-dessous a lieu dès le chargement de la page => erreur dans keyUpHandler lorsqu'on fournit le mot à deviner !
 document.addEventListener("keyup", keyUpHandler);
 
 /**
@@ -45,6 +46,7 @@ function keyUpHandler(event) {
     } else if (touche === "Backspace") {
         handleBackspace();
     } else if (touche === "Enter") {
+        // rnvs : pas de vérification si ligne complète
         tentativesActuel++;
         handleEnterKeyPress();
     }
@@ -85,7 +87,7 @@ function handleBackspace() {
  */
 function handleEnterKeyPress() {
     const currentWord = getCurrentWord();
-
+// rnvs : ici on findWord_dict(), mais pas quand on fournit le mot à trouver => incohérence et possibilité d'avoir des jeux impossibles à trouver
     if (findWord_dict(currentWord, dict)) {
         well_or_bad_placed(currentWord);
 
@@ -102,37 +104,9 @@ function handleEnterKeyPress() {
             return;
         }
 
-	// La classe d'animation
-	const row = gameEl.children[currentRowIndex];
-	row.classList.add('pulse-animation');
-
-	// Supprime la classe d'animation après un délai pour permettre la répétition
-	setTimeout(() => {
-		row.classList.remove('pulse-animation');
-	}, 500);
-	if (jeuTerminer(currentWord)) {
-		document.removeEventListener('keyup', keyUpHandler);
-		return;
-	}
-
-	currentRowIndex++;
-	currentTileIndex = 0;	
-}
-   else {
-		tentativesActuel--;
-		gameEl.classList.add('shake-animation');
-		setTimeout(() => {
-			gameEl.classList.remove('shake-animation');
-		}, 500);
-
-		for (let i = 0; i < targetWord.length; i++) {
-			gameEl.children[currentRowIndex].children[i].textContent = 'X';
-			currentTileIndex = 0; }
-   }
-
         currentRowIndex++;
         currentTileIndex = 0;
-    else {
+    } else {
         tentativesActuel--;
         sonWorddown.play();
         gameEl.classList.add("shake-animation");
@@ -145,8 +119,8 @@ function handleEnterKeyPress() {
             currentTileIndex = 0;
         }
     }
-
 }
+
 /**
  * Fonction qui verifie si on gagné ou perdu ou les tentatives <5
  * @param {string} word - le mot actuellement saisi
@@ -238,7 +212,7 @@ function victoryModal() {
 function defeatModal() {
     const failMsg = document.getElementById("failMsg");
     const coloredWord = `<span class="word">${targetWord}</span>`;
-    failMsg.innerHTML = `Dommage, Vous avez perdu! <br>Tentatives : ${tentativesMax}/${tentativesMax} 
+    failMsg.innerHTML = `Dommage, Vous avez perdu! <br>Tentatives : ${tentativesMax}/${tentativesMax}
                         <br><br>Le Mot était  ${coloredWord}`;
     defaite.style.display = "block";
 }
