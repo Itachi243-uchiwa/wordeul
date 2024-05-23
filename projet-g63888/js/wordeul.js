@@ -100,12 +100,7 @@ function handleEnterKeyPress(gameEl) {
 	// Supprime la classe d'animation après un délai pour permettre la répétition
 	setTimeout(() => {
 		row.classList.remove('pulse-animation');
-<<<<<<< HEAD
-	}, 500); // La durée de l'animation en milliseconde
-=======
 	}, 500);
-
->>>>>>> b68a18fe6b9d22d772e9ca925f6076e4ea4e895f
 	if (jeuTerminer(currentWord)) {
 		document.removeEventListener('keyup', keyUpHandler);
 		return;

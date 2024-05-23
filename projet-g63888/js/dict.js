@@ -1,37 +1,7 @@
-<<<<<<< HEAD
+"use strict";
  let dict;
  var targetWord;
 
-=======
-
-// function loadDictionaryFromFile(filePath, callback) {
-//     fetch(filePath)
-//         .then(response => response.text())
-//         .then(text => {
-//             const words = text.split('\n').map(word => word.trim());
-//             callback(null, words);
-//         })
-//         .catch(error => {
-//             callback(error, null);
-//         });
-// }
-
-// const filePath = 'dico.txt'; 
-// loadDictionaryFromFile(filePath, (error, dictionary) => {
-//     if (error) {
-//         console.error('Erreur lors du chargement du dictionnaire:', error);
-//     } else {
-//         console.log('Dictionnaire chargé avec succès:', dictionary);
-       
-//     }
-// });
-
-
- // eslint-disable-next-line
- let dict;
- var targetWord;
-
->>>>>>> b68a18fe6b9d22d772e9ca925f6076e4ea4e895f
  /**
   * @param {number} length entre 6 et 10
   * @param {string} firstLetter entre A et Z
@@ -76,11 +46,9 @@ const boutton = document.getElementById("btn1")
 boutton.addEventListener('click', function(e) {
     e.preventDefault();
     targetWord = hasard(dict);
-<<<<<<< HEAD
     document.getElementById("word").value = targetWord;
-=======
+
     taille = targetWord.length;
->>>>>>> b68a18fe6b9d22d772e9ca925f6076e4ea4e895f
     console.log(targetWord);
 })
 ;
