@@ -202,7 +202,7 @@ const boutonFail = defaite.querySelector(".close");
  */
 function victoryModal() {
     const winMsg = document.getElementById("winMsg");
-    winMsg.innerHTML = `Félicitations, vous avez gagné!<br><br>Tentatives : ${tentativesActuel}/${tentativesMax}`;
+    winMsg.innerHTML = "Félicitations, vous avez gagné!<br><br>Tentatives : ${tentativesActuel}/${tentativesMax}";
     victoire.style.display = "block";
 }
 

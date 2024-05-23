@@ -7,7 +7,6 @@ let targetWord;
 let tentativesMax;
 
 /**
->>>>>>> 098cbeba10295465dfd5d394f59f0060353b3abb
   * @param {number} length entre 6 et 10
   * @param {string} firstLetter entre A et Z
   */
