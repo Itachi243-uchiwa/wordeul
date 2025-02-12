@@ -38,12 +38,12 @@ Aucun prérequis technique particulier. Vous avez simplement besoin d'un navigat
 
 1. **Cloner le répertoire :**
    ```bash
-   git clone https://github.com/votre-utilisateur/wordeul.git
-   cd wordeul
+   git clone https://github.com/Itachi243-uchiwa/wordeul.git
+   cd projet-wordel
    ```
 
 2. **Ouvrir le fichier HTML :**
-   Double-cliquez sur `index.html` ou ouvrez-le via votre navigateur préféré.
+   Double-cliquez sur `wordeul.html` ou ouvrez-le via votre navigateur préféré.
 
 ## Utilisation
 
@@ -63,9 +63,9 @@ Aucun prérequis technique particulier. Vous avez simplement besoin d'un navigat
 
 ```
 wordeul/
-├── index.html       # Structure de la page
-├── style.css        # Styles pour l’interface du jeu
-└── script.js        # Logique du jeu (vérification des mots, gestion des entrées)
+├── wordeul.html       # Structure de la page
+├── style        # dossier de fichier css Styles pour l’interface du jeu
+└── js     #dossier des fichiers js Logique du jeu (vérification des mots, gestion des entrées)
 ```
 
 ## Personnalisation
